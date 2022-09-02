@@ -1,0 +1,30 @@
+<div class="container">
+  <h1 *ngIf="currentUsername$ | async as username">Hello {{username}} :) </h1>
+  <form>
+    <mat-form-field>
+      <mat-label>Search Book</mat-label>
+      <input matInput [formControl]="searchControl" (keyup)="search()">
+    </mat-form-field>
+  </form>
+  <ng-container *ngIf="search$ | async as result; else loader">
+    <div class="search-result-container" [@listAnimation]="result.items?.length">
+      <ng-container *ngIf="result.totalItems === 0" [ngTemplateOutlet]="noResult"></ng-container>
+      <app-book-item [bookItem]="book" *ngFor="let book of result?.items"></app-book-item>
+    </div>
+    <mat-paginator
+      (page)="handlePageEvent($event)"
+      [length]="result.totalItems"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      aria-label="Select page">
+    </mat-paginator>
+  </ng-container>
+</div>
+
+<ng-template #loader>
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-template #noResult>
+  <div class="no-result">No books found :(</div>
+</ng-template>

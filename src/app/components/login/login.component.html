@@ -1,0 +1,14 @@
+<form>
+  <mat-form-field class="" (keydown.enter)="$event.preventDefault()" >
+    <mat-label>Username</mat-label>
+    <input matInput [formControl]="userNameControl" (keydown.enter)="login()" value="">
+    <mat-error *ngIf="userNameControl.hasError('required')">
+      Username is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="userNameControl.hasError('cannotContainSpace')">
+      Username cannot contain spaces
+    </mat-error>
+  </mat-form-field>
+
+  <button type="button" [disabled]="userNameControl.invalid" mat-button (click)="login()">Login</button>
+</form>

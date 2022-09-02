@@ -1,0 +1,8 @@
+<mat-toolbar>
+  <span>Saar's Book Search</span>
+  <ng-container *ngIf="currentUsername$ | async">
+   <a *ngFor="let link of links" [routerLink]="[link.route]" [routerLinkActive]="link.activeClass">{{link.text}}</a>
+  </ng-container>
+  <span class="spacer"></span>
+  <mat-icon class="pointer" (click)="logout()">logout</mat-icon>
+</mat-toolbar>

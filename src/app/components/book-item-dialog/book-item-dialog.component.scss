@@ -1,0 +1,17 @@
+.dialog-container {
+  max-width: 500px;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.mat-card-title-group {
+  gap: 10px;
+}
+
+
+
+@media only screen and (max-width: 480px) {
+  .mat-card-title-group {
+    flex-direction: column;
+  }
+}

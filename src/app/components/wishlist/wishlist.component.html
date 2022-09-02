@@ -1,0 +1,5 @@
+<div class="container" >
+  <app-book-item *ngFor="let book of favorites | keyvalue"
+                 [bookItem]="book.value"
+  ></app-book-item>
+</div>

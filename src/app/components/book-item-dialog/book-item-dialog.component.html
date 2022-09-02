@@ -1,0 +1,19 @@
+<mat-card class="dialog-container">
+  <mat-card-title-group>
+    <mat-card-title>
+      {{data.title}}
+    </mat-card-title>
+    <mat-card-subtitle>{{data.subtitle}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="data.pageCount > 0" >Page Count: {{data.pageCount}}</mat-card-subtitle>
+    <img mat-card-lg-image [src]="data.imageLinks?.smallThumbnail" [alt]="data.title + ' book image'">
+    <mat-card-actions align="end" *ngIf="isFavorite !== undefined">
+      <mat-icon class="pointer" matTooltip="Add to favorites"
+                *ngIf="!isFavorite" (click)="setFavorites(true)">favorite_outline</mat-icon>
+      <mat-icon class="pointer" matTooltip="Remove from favorites"
+                *ngIf="isFavorite" (click)="setFavorites(false)">favorite</mat-icon>
+    </mat-card-actions>
+  </mat-card-title-group>
+  <mat-card-content>
+    {{data.description}}
+  </mat-card-content>
+</mat-card>

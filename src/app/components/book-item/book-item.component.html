@@ -1,0 +1,11 @@
+<div class="book-item pointer" (click)="openDialog()">
+  <div class="title-container flex">
+  <p class="title" [matTooltip]="bookItem.title">{{bookItem.title}}</p>
+    <span class="spacer"></span>
+    <mat-icon class="pointer" matTooltip="Add to favorites"
+              *ngIf="!isFavorite" (click)="$event.stopPropagation(); setFavorites(true)">favorite_outline</mat-icon>
+    <mat-icon class="pointer" matTooltip="Remove from favorites"
+              *ngIf="isFavorite" (click)="$event.stopPropagation(); setFavorites(false)">favorite</mat-icon>
+  </div>
+  <img [src]="bookItem.imageLinks?.smallThumbnail" alt="">
+</div>
